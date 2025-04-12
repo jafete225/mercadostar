@@ -4,7 +4,13 @@ import ProductImages from "@/components/ProductImages";
 import { wixClientServer } from "@/lib/wixClientServer";
 import { notFound } from "next/navigation";
 
-const SinglePage = async ({ params }: { params: { slug: string } }) => {
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
+const SinglePage = async ({ params }: PageProps) => {
   const wixClient = await wixClientServer();
 
   const products = await wixClient.products
@@ -24,6 +30,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
       <div className="w-full lg:w-1/2 lg:sticky top-20 h-max">
         <ProductImages items={product.media?.items} />
       </div>
+
       {/* TEXTS */}
       <div className="w-full lg:w-1/2 flex flex-col gap-6">
         <h1 className="text-4xl font-medium">{product.name}</h1>
@@ -69,3 +76,4 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
 };
 
 export default SinglePage;
+
