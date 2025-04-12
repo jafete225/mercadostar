@@ -1,9 +1,11 @@
+import { type Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Add from "@/components/Add";
-import CustomizeProduct from "@/components/CostomizeProduct"; 
-import ProductImages from "@/components/ProductImages"; 
+import CustomizeProduct from "@/components/CostomizeProduct";
+import ProductImages from "@/components/ProductImages";
 import { wixClientServer } from "@/lib/wixClientServer";
-import { notFound } from "next/navigation";
 
+// Aqui está o tipo correto para rotas dinâmicas
 interface PageProps {
   params: {
     slug: string;
@@ -76,4 +78,3 @@ const SinglePage = async ({ params }: PageProps) => {
 };
 
 export default SinglePage;
-
